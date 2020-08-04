@@ -29,45 +29,11 @@ namespace FFXIVActivity
             var response = await this.http.GetStringAsync(characterPageUri);
             var jResponse = JObject.Parse(response);
 
-            var lastActivityTime = default(DateTime);
+            var lastAchievementDate = GetLastAchievementDate(jResponse);
+            var lastMinionDate = GetLastMinionDate(jResponse);
+            var lastMountDate = GetLastMountDate(jResponse);
 
-            if (jResponse["Achievements"] != null)
-            {
-                foreach (var achievement in jResponse["Achievements"]["List"].Children())
-                {
-                    var date = JSTimeToDotnetTime(achievement["Date"].ToObject<long>() * 1000);
-                    if (date > lastActivityTime)
-                    {
-                        lastActivityTime = date;
-                    }
-                }
-            }
-
-            foreach (var minion in jResponse["Minions"].Children())
-            {
-                var minionReleaseTime = this.minionReleases
-                    .FirstOrDefault(m => m.Name == minion["Name"].ToObject<string>().ToLowerInvariant())?.ReleaseDate;
-                if (minionReleaseTime == null) continue;
-                var date = JSTimeToDotnetTime((long)minionReleaseTime * 1000);
-                if (date > lastActivityTime)
-                {
-                    lastActivityTime = date;
-                }
-            }
-
-            foreach (var mount in jResponse["Mounts"].Children())
-            {
-                var mountReleaseTime = this.mountReleases
-                    .FirstOrDefault(m => m.Name == mount["Name"].ToObject<string>().ToLowerInvariant())?.ReleaseDate;
-                if (mountReleaseTime == null) continue;
-                var date = JSTimeToDotnetTime((long)mountReleaseTime * 1000);
-                if (date > lastActivityTime)
-                {
-                    lastActivityTime = date;
-                }
-            }
-
-            return lastActivityTime;
+            return new[] { lastAchievementDate, lastMinionDate, lastMountDate }.Max();
         }
 
         public async Task<DateTime> GetLastActivityTime(string name, string world)
@@ -84,6 +50,57 @@ namespace FFXIVActivity
             var lodestoneId = character["ID"].ToObject<ulong>();
 
             return await GetLastActivityTime(lodestoneId);
+        }
+
+        private DateTime GetLastAchievementDate(JObject jResponse)
+        {
+            DateTime lastActivityTime = default;
+            if (jResponse["Achievements"] != null)
+            {
+                foreach (var achievement in jResponse["Achievements"]["List"].Children())
+                {
+                    var date = JSTimeToDotnetTime(achievement["Date"].ToObject<long>() * 1000);
+                    if (date > lastActivityTime)
+                    {
+                        lastActivityTime = date;
+                    }
+                }
+            }
+            return lastActivityTime;
+        }
+
+        private DateTime GetLastMinionDate(JObject jResponse)
+        {
+            DateTime lastActivityTime = default;
+            foreach (var minion in jResponse["Minions"].Children())
+            {
+                var minionReleaseTime = this.minionReleases
+                    .FirstOrDefault(m => m.Name == minion["Name"].ToObject<string>().ToLowerInvariant())?.ReleaseDate;
+                if (minionReleaseTime == null) continue;
+                var date = JSTimeToDotnetTime((long)minionReleaseTime * 1000);
+                if (date > lastActivityTime)
+                {
+                    lastActivityTime = date;
+                }
+            }
+            return lastActivityTime;
+        }
+
+        private DateTime GetLastMountDate(JObject jResponse)
+        {
+            DateTime lastActivityTime = default;
+            foreach (var mount in jResponse["Mounts"].Children())
+            {
+                var minionReleaseTime = this.minionReleases
+                    .FirstOrDefault(m => m.Name == mount["Name"].ToObject<string>().ToLowerInvariant())?.ReleaseDate;
+                if (minionReleaseTime == null) continue;
+                var date = JSTimeToDotnetTime((long)minionReleaseTime * 1000);
+                if (date > lastActivityTime)
+                {
+                    lastActivityTime = date;
+                }
+            }
+            return lastActivityTime;
         }
 
         private static T LoadManifestResource<T>(string name)
