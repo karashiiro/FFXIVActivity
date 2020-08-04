@@ -91,7 +91,7 @@ namespace FFXIVActivity
             DateTime lastActivityTime = default;
             foreach (var mount in jResponse["Mounts"].Children())
             {
-                var minionReleaseTime = this.minionReleases
+                var minionReleaseTime = this.mountReleases
                     .FirstOrDefault(m => m.Name == mount["Name"].ToObject<string>().ToLowerInvariant())?.ReleaseDate;
                 if (minionReleaseTime == null) continue;
                 var date = JSTimeToDotnetTime((long)minionReleaseTime * 1000);
