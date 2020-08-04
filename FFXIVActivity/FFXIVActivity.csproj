@@ -6,11 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Data\gearReleases.json" />
     <None Remove="Data\minionReleases.json" />
     <None Remove="Data\mountReleases.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Data\gearReleases.json" />
     <EmbeddedResource Include="Data\minionReleases.json" />
     <EmbeddedResource Include="Data\mountReleases.json" />
   </ItemGroup>
