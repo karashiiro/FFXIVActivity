@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FFXIVActivity", "FFXIVActivity\FFXIVActivity.csproj", "{B9D4D2FF-4E6C-4DA8-A676-38C566B5BF85}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C26FDED2-E175-4C42-9062-4679E8BA9316}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FFXIVActivityDataExporter", "FFXIVActivityDataExporter\FFXIVActivityDataExporter.csproj", "{4662F7C2-DAD2-41E8-B6BE-5B2D20E00846}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FFXIVActivityCheckerConsoleTest", "FFXIVActivityCheckerConsoleTest\FFXIVActivityCheckerConsoleTest.csproj", "{AC13F4C1-1999-4BB5-9310-53916202E6CD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9D4D2FF-4E6C-4DA8-A676-38C566B5BF85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9D4D2FF-4E6C-4DA8-A676-38C566B5BF85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9D4D2FF-4E6C-4DA8-A676-38C566B5BF85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9D4D2FF-4E6C-4DA8-A676-38C566B5BF85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4662F7C2-DAD2-41E8-B6BE-5B2D20E00846}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4662F7C2-DAD2-41E8-B6BE-5B2D20E00846}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4662F7C2-DAD2-41E8-B6BE-5B2D20E00846}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4662F7C2-DAD2-41E8-B6BE-5B2D20E00846}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC13F4C1-1999-4BB5-9310-53916202E6CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC13F4C1-1999-4BB5-9310-53916202E6CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC13F4C1-1999-4BB5-9310-53916202E6CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC13F4C1-1999-4BB5-9310-53916202E6CD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4CFBD8AC-0EB5-4DE1-A2C2-B7D7927025F8}
+	EndGlobalSection
+EndGlobal
